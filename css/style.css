@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css?family=Charm:400,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Varela+Round&display=swap");
+main, footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+main {
+  font-family: "Varela Round", sans-serif;
+  width: 100vw;
+  height: 95vh;
+  background-color: #ffe3e0;
+  text-align: center;
+}
+
+main .correct {
+  background-color: #00ff6a;
+}
+
+main .wrong {
+  background-color: #ff0000;
+}
+
+.container {
+  width: 80vw;
+  background-color: lightcyan;
+  border: 0.5px solid #aaa;
+  border-radius: 5px;
+  padding: 10px;
+  -webkit-box-shadow: 0 0 10px 2px #bbb;
+          box-shadow: 0 0 10px 2px #bbb;
+}
+
+.container #all-subjects,
+.container #answers {
+  display: -ms-grid;
+  display: grid;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.container #all-subjects {
+  -ms-grid-columns: (auto)[3];
+      grid-template-columns: repeat(3, auto);
+}
+
+.container #answers {
+  -ms-grid-columns: (auto)[2];
+      grid-template-columns: repeat(2, auto);
+}
+
+.container .btn {
+  border: 1px solid rgba(0, 102, 255, 0.637);
+  background-color: #00aaff;
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: white;
+  outline: none;
+}
+
+.container .btn:hover {
+  -webkit-box-shadow: 0 0 10px 2px #aaa;
+          box-shadow: 0 0 10px 2px #aaa;
+}
+
+.container .correct {
+  background-color: #00ff6a;
+}
+
+.container .wrong {
+  background-color: #ff0000;
+}
+
+.container #start,
+.container #next {
+  font-size: 1.1em;
+  font-weight: bold;
+  padding: 10px 20px;
+}
+
+.container p,
+.container #question {
+  font-size: 1.4em;
+}
+
+.hide {
+  display: none;
+}
+
+footer {
+  background-color: #ffe3e0;
+  text-align: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  bottom: 0;
+  height: 50px;
+  line-height: 50px;
+  font-weight: bold;
+  font-size: 23px;
+  font-family: "Charm", cursive;
+}
+
+footer a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+footer span {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+footer img {
+  height: 25px;
+  width: 25px;
+}
+/*# sourceMappingURL=style.css.map */

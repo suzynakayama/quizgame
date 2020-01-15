@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css?family=Charm:400,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Varela+Round&display=swap");
+
+$primary-font: "Varela Round", sans-serif;
+$color: #ffe3e0;
+$color-neutral: #00aaff;
+$color-wrong: #ff0000;
+$color-correct: #00ff6a;
+
+%display-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    @extend %display-flex;
+    font-family: $primary-font;
+    width: 100vw;
+    height: 95vh;
+    background-color: $color;
+    text-align: center;
+    .correct {
+        background-color: $color-correct;
+    }
+    .wrong {
+        background-color: $color-wrong;
+    }
+}
+
+.container {
+    width: 80vw;
+    background-color: lightcyan;
+    border: 0.5px solid #aaa;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px 2px #bbb;
+    #all-subjects,
+    #answers {
+        display: grid;
+        gap: 10px;
+        margin: 20px 0;
+    }
+    #all-subjects {
+        grid-template-columns: repeat(3, auto);
+    }
+    #answers {
+        grid-template-columns: repeat(2, auto);
+    }
+    .btn {
+        border: 1px solid rgba(0, 102, 255, 0.637);
+        background-color: $color-neutral;
+        border-radius: 5px;
+        padding: 5px 10px;
+        color: white;
+        outline: none;
+    }
+    .btn:hover {
+        box-shadow: 0 0 10px 2px #aaa;
+    }
+    .correct {
+        background-color: $color-correct;
+    }
+    .wrong {
+        background-color: $color-wrong;
+    }
+    #start,
+    #next {
+        font-size: 1.1em;
+        font-weight: bold;
+        padding: 10px 20px;
+    }
+    p,
+    #question {
+        font-size: 1.4em;
+    }
+}
+
+.hide {
+    display: none;
+}
+
+footer {
+    @extend %display-flex;
+    background-color: $color;
+    text-align: center;
+    align-content: center;
+    bottom: 0;
+    height: 50px;
+    line-height: 50px;
+    font-weight: bold;
+    font-size: 23px;
+    font-family: "Charm", cursive;
+    a {
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+    }
+    span {
+        font-size: 20px;
+        font-weight: 400;
+    }
+    img {
+        height: 25px;
+        width: 25px;
+    }
+}

@@ -6,11 +6,10 @@
     const allSubjects = document.getElementById("all-subjects");
     const answers = document.getElementById("answers");
 
-    const startBtn = document.getElementById("start");
     const nextBtn = document.getElementById("next");
 
     //event listeners
-    startBtn.addEventListener("click", init);
+    allSubjects.addEventListener("click", init);
     nextBtn.addEventListener("click", () => {
         questionIdx++;
         callNext();
@@ -18,15 +17,25 @@
 
     //functions
 
-    function init() {
-        questionsContainer.classList.add("hide");
-        shuffled = questions.sort(() => Math.random() - 0.5);
+    function init(evt) {
+        const selectedBtn = evt.target;
+        console.log(selectedBtn);
+        if (selectedBtn === document.getElementById("html")) {
+            shuffled = htmlQuestions.sort(() => Math.random() - 0.5);
+        } else if (selectedBtn === document.getElementById("css")) {
+            shuffled = cssQuestions.sort(() => Math.random() - 0.5);
+        } else {
+            shuffled = jsQuestions.sort(() => Math.random() - 0.5);
+        }
         questionIdx = 0;
         questionsContainer.classList.remove("hide");
         callNext();
     }
 
-    function callNext() {}
+    function callNext() {
+        cleargame();
+        showQuestion(shuffled[questionIdx]);
+    }
 
     const htmlQuestions = [
         {

@@ -1,25 +1,37 @@
 (function() {
     //constants and cached
+    let shuffled, questionIdx;
+    let total = 0;
     const subjectsContainer = document.getElementById("subjects-container");
     const questionsContainer = document.getElementById("questions-container");
     const questionEl = document.getElementById("question");
     const allSubjects = document.getElementById("all-subjects");
+    const questionsNumber = document.getElementById("numbers");
     const answers = document.getElementById("answers");
 
     const nextBtn = document.getElementById("next");
+    const restartBtn = document.getElementById("restart");
+    const msgDiv = document.getElementById("winning-message");
+    const msg = document.getElementById("msg");
 
     //event listeners
     allSubjects.addEventListener("click", init);
     nextBtn.addEventListener("click", () => {
         questionIdx++;
+        questionsNumber.innerText = `${questionIdx + 1}/10`;
         callNext();
+    });
+    restartBtn.addEventListener("click", () => {
+        questionsContainer.classList.add("hide");
+        subjectsContainer.classList.remove("hide");
+        msgDiv.classList.add("hide");
+        init();
     });
 
     //functions
 
     function init(evt) {
         const selectedBtn = evt.target;
-        console.log(selectedBtn);
         if (selectedBtn === document.getElementById("html")) {
             shuffled = htmlQuestions.sort(() => Math.random() - 0.5);
         } else if (selectedBtn === document.getElementById("css")) {
@@ -28,6 +40,8 @@
             shuffled = jsQuestions.sort(() => Math.random() - 0.5);
         }
         questionIdx = 0;
+        questionsNumber.innerText = "1/10";
+        subjectsContainer.classList.add("hide");
         questionsContainer.classList.remove("hide");
         callNext();
     }
@@ -35,6 +49,64 @@
     function callNext() {
         cleargame();
         showQuestion(shuffled[questionIdx]);
+    }
+
+    function showQuestion(question) {
+        questionEl.innerText = question.question;
+        question.answers.forEach(answer => {
+            const button = document.createElement("button");
+            button.innerText = answer.text;
+            button.classList.add("btn");
+            if (answer.correct) {
+                button.dataset.correct = answer.correct;
+            }
+            button.addEventListener("click", chosenAnswer);
+            answers.appendChild(button);
+        });
+    }
+
+    function cleargame() {
+        nextBtn.classList.add("hide");
+        while (answers.firstChild) {
+            answers.removeChild(answers.firstChild);
+        }
+    }
+
+    function chosenAnswer(evt) {
+        let selectedAnswer = evt.target;
+        let correct = selectedAnswer.dataset.correct;
+        if (correct) {
+            total++;
+        }
+        [...answers.children].forEach(button => {
+            setColor(button, button.dataset.correct);
+        });
+        if (shuffled.length > questionIdx + 1) {
+            nextBtn.classList.remove("hide");
+        } else {
+            console.log("inside");
+            yourPoints();
+        }
+    }
+
+    function setColor(element, correct) {
+        clearClass(element);
+        if (correct) {
+            element.classList.add("correct");
+        } else {
+            element.classList.add("wrong");
+        }
+    }
+
+    function clearClass(element) {
+        element.classList.remove("correct");
+        element.classList.remove("wrong");
+    }
+
+    function yourPoints() {
+        console.log("points");
+        msg.innerText = `You got ${total} correct answers!`;
+        msgDiv.classList.remove("hide");
     }
 
     const htmlQuestions = [
@@ -48,7 +120,7 @@
             ]
         },
         {
-            question: "Why do you insert a comment?",
+            question: "How do you insert a comment?",
             answers: [
                 { text: "// my comment", correct: false },
                 { text: "<* y comment *>", correct: false },
@@ -127,7 +199,7 @@
             answers: [
                 { text: "<preformat>", correct: false },
                 { text: "<format>", correct: false },
-                { text: "<preformatted", correct: false },
+                { text: "<preformatted>", correct: false },
                 { text: "<pre>", correct: true }
             ]
         }
@@ -262,8 +334,8 @@
             question: "How can I get the nearest rounded up integer for 7.8?",
             answers: [
                 { text: "Math.random(7.8)", correct: false },
-                { text: "Math.ceil(7.8)", correct: false },
-                { text: "Math.max(7.8)", correct: true },
+                { text: "Math.ceil(7.8)", correct: true },
+                { text: "Math.max(7.8)", correct: false },
                 { text: "Math.pow(7.8)", correct: false }
             ]
         },

@@ -9,6 +9,8 @@
         <title>Quiz Game</title>
     </head>
     <body>
+        <h1>The Quiz Game</h1>
+        </h1>
         <main>
             <div class="container" id="subjects-container">
                 <div>
@@ -26,13 +28,18 @@
                 <div>
                     <div id="question">Question</div>
                     <div id="answers">
-                        <div class="btn correct">1</div>
+                        <div class="btn">1</div>
                         <div class="btn">2</div>
-                        <div class="btn wrong">3</div>
+                        <div class="btn">3</div>
                         <div class="btn">4</div>
                     </div>
+                    <p id="numbers"></p>
                 </div>
                 <button type="submit" id="next" class="btn">Next</button>
+            </div>
+            <div class="winning-message hide" id="winning-message">
+                <div id="msg">You got 10 correct answers!</div>
+                <button class="btn" id="restart">Restart</button>
             </div>
         </main>
         <footer>

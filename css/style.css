@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Charm:400,700&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Varela+Round&display=swap");
-main, footer {
+body main, body footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -19,25 +19,37 @@ main, footer {
           box-sizing: border-box;
 }
 
-main {
+body {
+  background-color: #ffe6e2;
+}
+
+body h1 {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 2.5rem;
+  color: #05547c;
+  text-shadow: 2px 0 2px #03354e;
+}
+
+body main {
   font-family: "Varela Round", sans-serif;
-  width: 100vw;
-  height: 95vh;
-  background-color: #ffe3e0;
+  width: 50vw;
+  height: 80vh;
+  margin: 0 auto;
   text-align: center;
 }
 
-main .correct {
-  background-color: #00ff6a;
+body main .correct {
+  background-color: #58f89b;
 }
 
-main .wrong {
-  background-color: #ff0000;
+body main .wrong {
+  background-color: #fd5151;
 }
 
-.container {
+body .container {
   width: 80vw;
-  background-color: lightcyan;
+  background-color: #c7f7f7;
   border: 0.5px solid #aaa;
   border-radius: 5px;
   padding: 10px;
@@ -45,25 +57,52 @@ main .wrong {
           box-shadow: 0 0 10px 2px #bbb;
 }
 
-.container #all-subjects,
-.container #answers {
+body .container #all-subjects,
+body .container #answers {
   display: -ms-grid;
   display: grid;
   gap: 10px;
   margin: 20px 0;
 }
 
-.container #all-subjects {
+body .container #all-subjects {
   -ms-grid-columns: (auto)[3];
       grid-template-columns: repeat(3, auto);
 }
 
-.container #answers {
-  -ms-grid-columns: (auto)[2];
-      grid-template-columns: repeat(2, auto);
+body .container #answers {
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
 }
 
-.container .btn {
+body .container .correct {
+  background-color: #58f89b;
+}
+
+body .container .wrong {
+  background-color: #fd5151;
+}
+
+body .container #start,
+body .container #next {
+  font-size: 1.3em;
+  font-weight: bold;
+  padding: 10px 20px;
+}
+
+body .container p,
+body .container #question {
+  font-size: 1.4em;
+}
+
+body .container #numbers {
+  width: 60px;
+  font-size: 1rem;
+  margin-left: 80%;
+}
+
+body .btn {
+  font-size: 1.2em;
   border: 1px solid rgba(0, 102, 255, 0.637);
   background-color: #00aaff;
   border-radius: 5px;
@@ -72,37 +111,48 @@ main .wrong {
   outline: none;
 }
 
-.container .btn:hover {
+body .btn:hover {
   -webkit-box-shadow: 0 0 10px 2px #aaa;
           box-shadow: 0 0 10px 2px #aaa;
 }
 
-.container .correct {
-  background-color: #00ff6a;
+body .hide {
+  display: none !important;
 }
 
-.container .wrong {
-  background-color: #ff0000;
+body .winning-message {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ffb6ae;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  font-size: 2rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
-.container #start,
-.container #next {
-  font-size: 1.1em;
+body .winning-message #msg {
+  color: #000;
   font-weight: bold;
-  padding: 10px 20px;
+  margin-bottom: 20px;
+  font-size: 2.8rem;
 }
 
-.container p,
-.container #question {
-  font-size: 1.4em;
-}
-
-.hide {
-  display: none;
-}
-
-footer {
-  background-color: #ffe3e0;
+body footer {
+  background-color: #ffe6e2;
   text-align: center;
   -ms-flex-line-pack: center;
       align-content: center;
@@ -114,18 +164,18 @@ footer {
   font-family: "Charm", cursive;
 }
 
-footer a {
+body footer a {
   text-decoration: none;
   color: black;
   font-weight: bold;
 }
 
-footer span {
+body footer span {
   font-size: 20px;
   font-weight: 400;
 }
 
-footer img {
+body footer img {
   height: 25px;
   width: 25px;
 }
